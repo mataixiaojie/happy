@@ -22,87 +22,20 @@
                 padding: 0;
                 border: 0;
             }
-
-            .nav
-            {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 27px;
-                background-color: white;
-                color: black;
-                text-align: center;
-                line-height: 25px;
-            }
-
-            a
-            {
-                color: black;
-                text-decoration: none;
-                border-bottom: 1px dashed black;
-            }
-
-            a:hover
-            {
-                border-bottom: 1px solid red;
-            }
-
-            .previous
-            {
-                float: left;
-                margin-left: 10px;
-            }
-
-            .next
-            {
-                float: right;
-                margin-right: 10px;
-            }
-
-            .green
-            {
-                color: green;
-            }
-
-            .red
-            {
-                color: red;
-            }
-
-            textarea
-            {
+            .box{
                 width: 100%;
                 height: 100%;
-                border: 0;                
-                padding: 0;                
-                margin: 0;                
-                padding-bottom: 20px;              
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
-
-            .block-outer            
-            {                
-                float: left;                
-                width: 22%;                
-                height: 100%;                
-                padding: 5px;                
-                border-left: 1px solid black;                
-                margin: 30px 3px 3px 3px;                
-            }
-
-            .block-inner            
-            {                
-                height: 68%;                
-            }
-
-            .one
-            {                
-                border: 0;                
-            }
+           
         </style>
     </head>
 <body marginwidth="0" marginheight="0">
-    <canvas id="c" height="356" width="446">
+    <div class="box">
+        <canvas id="c" height="556" width="546"></canvas>
+    </div>
     <script>
         var collapsed = true;
         function toggle()
@@ -141,20 +74,21 @@
         U=16;
         T=M.sin;
         E=M.sqrt;
-        for(O=k=0;x=z=j=i=k<200;)
+        for(O=k=0;x=z=j=i=k<350;)
         with(M[k]=k?c.cloneNode(0):c)
         {    
-            width=height=k?32:W=446;
+            width=height=k?32:W=846;
             with(getContext('2d'))
             if(k>10|!k)
 
             for(
             font='60px Impact',
-            V='rgba(';I=i*U,fillStyle=k?k==13?V+'205,205,215,.15)':
-            V+(147+I)+','+(k%2?128+I:0)+','+I+',.5)':'#cca',i<7;)
+            V='rgba(';I=i*U,fillStyle=k?k==13?V+'200,180,215,.15)':
+            V+(250+I)+','+(k%2?138+I:0)+','+I+',0.7)':'#f34',i<7;)
 
             beginPath(fill(arc(U-i/3,24-i/2,k==13?4-(i++)/2:8-i++,0,M.PI*2,1)));
 
+            //树的样式-颜色、形状
             else for(;
             x=T(i),        
             y=Q()*2-1,        
@@ -164,6 +98,7 @@
             i++<W;        
             )
 
+            //树的样式-颜色、形状
             if(D<1)    
             beginPath(strokeStyle=V+R+','+(R+B*L>>0)+',40,.1)'),        
             moveTo(U+x*8,U+y*8),        
@@ -171,13 +106,13 @@
             stroke();
 
             for(        
-            y=H=k+E(k++)*25,        
+            y=H=k+E(k++)*30, //树长       
             R=Q()*W;        
             P=3,j<H;)    
             J[O++]=[
                 x+=T(R)*P+Q()*6-3,y+=Q()*U-8,
                 z+=T(R-11)*P+Q()*6-3,
-                j/H*20+((j+=U)>H&Q()>.8?Q(P=9)*4:0)>>1]
+                j/H*20+((j+=U)>H&Q()>.9?Q(P=9)*4:0)>>1]
         }
 
         setInterval(function G(m,l)
@@ -193,16 +128,18 @@
             for(
             i=0;
             L=J[i++];
-            a.drawImage(M[L[3]+1],207+L[0]*A+L[2]*T(D)>>0,L[1]>>1))    
+            
+            //树的位置
+            a.drawImage(M[L[3]+1],400+L[0]*A+L[2]*T(D)>>0,L[1]>>1))    
             {
                 if(i==2e3)
                 a.fillText
-                ('Happy Christmas!',U,345);
+                ('Happy Christmas!',200,600);//文字的位置
 
                 if(!(i%7))        
                 a.drawImage(M[13],
                 ((157*(i*i)+T(D*5+i*i)*5)%W)>>0,
-                ((113*i+(D*i)/60)%(290+i/99))>>0);
+                ((113*i+(D*i)/60)%(400+i/99))>>0);
             }    
             D+=.02
         },1)
